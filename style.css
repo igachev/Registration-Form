@@ -6,6 +6,7 @@
     height: 60px;
     background-color: black;
     border-radius: 50px;
+    
 }
 
 .form-element .progress-bar::before {
@@ -16,11 +17,21 @@
     bottom: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: auto;
     padding: 5px 30px;
     width: calc(var(--width,0)*1%);
     height: 40px;
     background-color: purple;
     border-radius: 50px;
-    
+    transition: 0.3s linear width;
+}
+
+[data-label] {
+    color: #fff;
+    font-size: 24px;
+}
+
+.upper, .lower, .length, .digit {
+    font-size: 20px;
 }
