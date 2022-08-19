@@ -4,6 +4,7 @@ const lengthText = document.querySelector('.length')
 const lowerText = document.querySelector('.lower')
 const progressBar = document.querySelector('.progress-bar')
 const passwordField = document.getElementById('pass');
+const usernameField = document.getElementById('username')
 
 let alreadyIncreasedDigit = false;
 let alreadyIncreasedUpper = false;
@@ -14,6 +15,7 @@ let passwordStrengthLevel = 0;
 
 
 passwordField.addEventListener('keyup',checkPassword)
+usernameField.addEventListener('keyup',checkUsername)
 
 function checkPassword() {
     const passwordFieldValue = document.getElementById('pass').value;
@@ -22,6 +24,13 @@ function checkPassword() {
     checkForLength(passwordFieldValue)
     checkForLower(passwordFieldValue)
     updateStrengthLevel(passwordStrengthLevel)
+}
+
+function checkUsername() {
+    const usernameFieldValue = document.getElementById('username').value;
+    userNameLength(usernameFieldValue)
+    userNameRestrictions(usernameFieldValue)
+    userNameSymbolError(usernameFieldValue)
 }
 
 function checkForDigit(passwordValue) {
@@ -140,5 +149,35 @@ function updateStrengthLevel(passwordStrengthLevel) {
     else if(passwordStrengthLevel === 4) {
         currentPasswordLevel.dataset.label = 'High'
         document.querySelector('[data-label]').style.color = 'orange'
+    }
+}
+
+function userNameLength(usernameFieldValue) {
+    let lengthText = document.querySelector('.username-length')
+    if(usernameFieldValue.length < 4) {
+        lengthText.style.display = 'block'
+    }
+    else {
+        lengthText.style.display = 'none'
+    }
+}
+
+function userNameRestrictions(usernameFieldValue) {
+    let restrictions = document.querySelector('.username-restrictions')
+    if(usernameFieldValue.match(/[A-Za-z\d]{4,16}/g)) {
+        restrictions.style.display = 'none'
+    }
+    else if(!usernameFieldValue.match(/[A-Za-z\d]{4,16}/g)) {
+        restrictions.style.display = 'block'
+    }
+}
+
+function userNameSymbolError(usernameFieldValue) {
+    let errorMsg = document.querySelector('.symbols')
+    if(usernameFieldValue.match(/[!@#\$%\^\&*\)\(+=._-]/g)) {
+        errorMsg.style.display = 'block'
+    }
+    else {
+        errorMsg.style.display = 'none'
     }
 }

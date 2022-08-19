@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div>
+    <h1>Registration Form</h1>
+</div>
     <form action="result.html" method="get" enctype="multipart/form-data">
         <div>
             <label for="username">UserName</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" minlength="4" maxlength="16" pattern="[a-zA-Z\d]{4,16}">
+            <p class="username-length">Username length must be longer than 3 and less than 17</p>
+            <p class="username-restrictions">Username must consist of lowercase letters,uppercase letters or digits</p>
+            <p class="symbols">Do not use symbols!</p>
         </div>
 
         <div>
