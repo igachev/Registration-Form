@@ -14,7 +14,7 @@
     <form action="result.html" method="get" enctype="multipart/form-data">
         <div>
             <label for="username">UserName</label>
-            <input type="text" name="username" id="username" minlength="4" maxlength="16" pattern="[a-zA-Z\d]{4,16}">
+            <input type="text" name="username" id="username" minlength="4" maxlength="16" pattern="[a-zA-Z\d]{4,16}" required>
             <p class="username-length">Username length must be longer than 3 and less than 17</p>
             <p class="username-restrictions">Username must consist of lowercase letters,uppercase letters or digits</p>
             <p class="symbols">Do not use symbols!</p>
@@ -22,7 +22,7 @@
 
         <div>
             <label for="pass">Password</label>
-            <input type="password" name="pass" id="pass">
+            <input type="password" name="pass" id="pass" required minlength="8">
             <div class="form-element">
                 <h3>Password Strength Bar</h3>
                 <div class="progress-bar" style="--width:10" data-label="Low">
@@ -32,6 +32,18 @@
                 <p class="length">Password length must be greater than 8</p>
                 <p class="digit">Password must contain a digit</p>
                 <p class="lower">Password must contain lowercase letters</p>
+        </div>
+
+        <div>
+            <label for="e-mail">Enter your gmail</label>
+            <input type="email" pattern="^[a-z][a-z0-9_.]*@(gmail).com$" name="e-mail" id="e-mail" placeholder="Gmail required...">
+        </div>
+
+        <div>
+            <p>You must be at least 14 years old</p>
+            <label for="birthDate">Birth Date</label>
+            <input type="date" name="birthDate" id="birthDate" max="2008-12-31" min="1908-12-31">
+            <p class="age">Age:</p>
         </div>
 
         <div>

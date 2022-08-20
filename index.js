@@ -5,6 +5,7 @@ const lowerText = document.querySelector('.lower')
 const progressBar = document.querySelector('.progress-bar')
 const passwordField = document.getElementById('pass');
 const usernameField = document.getElementById('username')
+const dateField = document.getElementById('birthDate')
 
 let alreadyIncreasedDigit = false;
 let alreadyIncreasedUpper = false;
@@ -16,6 +17,7 @@ let passwordStrengthLevel = 0;
 
 passwordField.addEventListener('keyup',checkPassword)
 usernameField.addEventListener('keyup',checkUsername)
+dateField.addEventListener('input',calculateAge)
 
 function checkPassword() {
     const passwordFieldValue = document.getElementById('pass').value;
@@ -180,4 +182,16 @@ function userNameSymbolError(usernameFieldValue) {
     else {
         errorMsg.style.display = 'none'
     }
+}
+
+function calculateAge() {
+    let date = new Date(document.getElementById('birthDate').value)
+   
+    let year = date.getFullYear()
+    let currentYear = new Date().getFullYear();
+    let age = Number(currentYear) - Number(year)
+    let ageText = document.querySelector('.age')
+    ageText.innerText = 'Age:'+ age;
+   // console.log(year);
+
 }
