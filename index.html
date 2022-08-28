@@ -51,7 +51,31 @@
 
         <div class="phone-field">
             <label for="phone-number">Phone:</label>
-            <input type="tel" name="phone-number" id="phone-number" pattern="[0-9]{10}" placeholder="consist of 10 digits...">
+            <input type="tel" name="phone-number" id="phone-number" pattern="([+])?[0-9]{10,12}" placeholder="e.g., +359123456789">
+        </div>
+
+        <div class="gender-field">
+            
+            <fieldset>
+                <legend>Gender</legend>
+                <div>
+                    <input type="radio" name="gender" id="male" value="male">
+                <label for="male">Male</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="gender" id="female" value="female">
+                <label for="female">Female</label>
+                </div>
+                
+            </fieldset>
+            
+        </div>
+
+        <div class="file-field">
+            <label for="profile-pic">Select Profile Picture:</label>
+            <input type="file" name="profile-pic" id="profile-pic"  accept=".jpg, .jpeg, .png">
+            <div class="preview"></div>
         </div>
 
         <div class="btns">

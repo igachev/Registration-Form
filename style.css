@@ -86,6 +86,25 @@ div p {
     padding: 20px;
 }
 
+.gender-field {
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    padding: 20px;
+}
+
+.file-field {
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    padding: 20px;
+}
+
+.preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
 .btns {
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
@@ -112,6 +131,15 @@ div span {
 
 input:focus {
     border-color: #fff;
+}
+
+.gender-field fieldset legend {
+   margin-left: 15px;
+   font-size: 20px;
+}
+
+.gender-field fieldset {
+    padding: 40px;
 }
 
 .btns {

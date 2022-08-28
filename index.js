@@ -6,6 +6,9 @@ const progressBar = document.querySelector('.progress-bar')
 const passwordField = document.getElementById('pass');
 const usernameField = document.getElementById('username')
 const dateField = document.getElementById('birthDate')
+const fileInput = document.querySelector('input[type=file]')
+const preview = document.querySelector('.preview')
+
 
 let alreadyIncreasedDigit = false;
 let alreadyIncreasedUpper = false;
@@ -18,6 +21,7 @@ let passwordStrengthLevel = 0;
 passwordField.addEventListener('keyup',checkPassword)
 usernameField.addEventListener('keyup',checkUsername)
 dateField.addEventListener('input',calculateAge)
+fileInput.addEventListener('change',updateImage)
 
 function checkPassword() {
     const passwordFieldValue = document.getElementById('pass').value;
@@ -194,4 +198,19 @@ function calculateAge() {
     ageText.innerText = 'Age:'+ age;
    // console.log(year);
 
+}
+
+function updateImage() {
+    while(preview.firstChild) {
+        preview.removeChild(preview.firstChild)
+    }
+
+    const currentFile = fileInput.files;
+
+    let image = document.createElement('img')
+    let text = document.createElement('p')
+    image.src = URL.createObjectURL(currentFile[0]);
+    image.width = 200
+    console.log(image);
+    preview.appendChild(image)
 }
