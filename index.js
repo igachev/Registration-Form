@@ -8,7 +8,8 @@ const usernameField = document.getElementById('username')
 const dateField = document.getElementById('birthDate')
 const fileInput = document.querySelector('input[type=file]')
 const preview = document.querySelector('.preview')
-
+const confirmPassword = document.getElementById('confirm-pass')
+const submitBtn = document.querySelector('.submit-btn')
 
 let alreadyIncreasedDigit = false;
 let alreadyIncreasedUpper = false;
@@ -22,6 +23,8 @@ passwordField.addEventListener('keyup',checkPassword)
 usernameField.addEventListener('keyup',checkUsername)
 dateField.addEventListener('input',calculateAge)
 fileInput.addEventListener('change',updateImage)
+confirmPassword.addEventListener('input',validatePassword)
+submitBtn.addEventListener('click',customValidate)
 
 function checkPassword() {
     const passwordFieldValue = document.getElementById('pass').value;
@@ -214,3 +217,63 @@ function updateImage() {
     console.log(image);
     preview.appendChild(image)
 }
+
+function validatePassword() {
+    let passwordPattern = document.getElementById('confirm-pass');
+    let getPasswordValue = document.getElementById('pass').value;
+    //console.log(getPasswordValue);
+    
+    passwordPattern.setAttribute("pattern",`${getPasswordValue}`)
+    //console.log(passwordPattern);
+}
+
+function customValidate() {
+    validateConfirmPassword()
+    validateEmail()
+    validatePhoneNumber()
+  }
+
+  function validateConfirmPassword() {
+    const input = document.getElementById('confirm-pass');
+    const validityState = input.validity;
+  
+    if (validityState.valueMissing) {
+      input.setCustomValidity('You must confirm your password!');
+    } else if (validityState.patternMismatch) {
+      input.setCustomValidity('Confirm password must be the same as password!');
+    }  else {
+      input.setCustomValidity('');
+    }
+  
+    input.reportValidity();
+  }
+
+  function validateEmail() {
+    const input = document.getElementById('e-mail');
+    const validityState = input.validity;
+  
+    if (validityState.valueMissing) {
+      input.setCustomValidity('You must add your gmail!');
+    } else if (validityState.patternMismatch) {
+      input.setCustomValidity('Error!Gmail required!');
+    }  else {
+      input.setCustomValidity('');
+    }
+  
+    input.reportValidity();
+  }
+
+  function validatePhoneNumber() {
+    const input = document.getElementById('phone-number');
+    const validityState = input.validity;
+  
+    if (validityState.valueMissing) {
+      input.setCustomValidity('You must add your phone number!');
+    } else if (validityState.patternMismatch) {
+      input.setCustomValidity('Only digits are allowed!');
+    }  else {
+      input.setCustomValidity('');
+    }
+  
+    input.reportValidity();
+  }

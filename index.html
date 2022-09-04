@@ -14,7 +14,7 @@
     <form action="result.html" method="get" enctype="multipart/form-data" autocomplete="off">
         <div class="wrapper-container">
             <h1>Registration Form</h1>
-        <div class="username-field">
+        <div class="username-field field">
             <label for="username">Username <span>*</span></label>
             <input type="text" name="username" id="username" minlength="4" maxlength="16" pattern="[a-zA-Z\d]{4,16}" size="40" required>
             <p class="username-length">Username length must be longer than 3 and less than 17</p>
@@ -22,7 +22,7 @@
             <p class="symbols">Do not use symbols!</p>
         </div>
 
-        <div class="password-field">
+        <div class="password-field field">
             <label for="pass">Password <span>*</span></label>
             <input type="password" name="pass" id="pass" required minlength="8" size="40">
             <div class="form-element">
@@ -37,24 +37,29 @@
                 <p class="lower">Password must contain lowercase letters</p>
         </div>
 
-        <div class="email-field">
+        <div class="confirm-password-field field">
+            <label for="confirm-pass">Confirm Password <span>*</span></label>
+            <input type="password" name="confirm-pass" id="confirm-pass" size="40" required >
+        </div>
+
+        <div class="email-field field">
             <label for="e-mail">Enter your gmail <span>*</span></label>
             <input type="email" pattern="^[a-z][a-z0-9_.]*@(gmail).com$" name="e-mail" id="e-mail" placeholder="Gmail required..." size="40" required>
         </div>
 
-        <div class="birthdate-field">
+        <div class="birthdate-field field">
             <p>You must be at least 14 years old</p>
             <label for="birthDate">BirthDate <span>*</span></label>
             <input type="date" name="birthDate" id="birthDate" max="2008-12-31" min="1908-12-31" required>
             <p class="age">Age:</p>
         </div>
 
-        <div class="phone-field">
+        <div class="phone-field field">
             <label for="phone-number">Phone:</label>
-            <input type="tel" name="phone-number" id="phone-number" pattern="([+])?[0-9]{10,12}" placeholder="e.g., +359123456789">
+            <input type="tel" name="phone-number" id="phone-number" pattern="([+])?[0-9]{10,12}" placeholder="e.g., +359123456789" required>
         </div>
 
-        <div class="gender-field">
+        <div class="gender-field field">
             
             <fieldset>
                 <legend>Gender</legend>
@@ -72,14 +77,27 @@
             
         </div>
 
-        <div class="file-field">
+        <div class="file-field field">
             <label for="profile-pic">Select Profile Picture:</label>
             <input type="file" name="profile-pic" id="profile-pic"  accept=".jpg, .jpeg, .png">
             <div class="preview"></div>
         </div>
 
+        <div class="region-field field">
+            <label for="region-select">Choose a region:</label>
+            <select name="regions" id="region-select">
+                <option value="">Please choose your region</option>
+                <option value="Africa">Africa</option>
+                <option value="Asia">Asia</option>
+                <option value="Australia">Australia</option>
+                <option value="Europe">Europe</option>
+                <option value="North America">North America</option>
+                <option value="South America">South America</option>
+            </select>
+        </div>
+
         <div class="btns">
-        <button type="submit">Submit</button>
+        <button class="submit-btn" type="submit">Submit</button>
         <button type="reset">Reset</button>
         </div>
 

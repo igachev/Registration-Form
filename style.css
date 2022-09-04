@@ -98,6 +98,12 @@ div p {
     padding: 20px;
 }
 
+.region-field {
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    padding: 20px;
+}
+
 .preview {
     display: flex;
     align-items: center;
@@ -109,6 +115,10 @@ div p {
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     padding: 20px;
+}
+
+.btns button {
+    cursor: pointer;
 }
 
 div label {
@@ -142,6 +152,19 @@ input:focus {
     padding: 40px;
 }
 
+select {
+    font-size: 20px;
+    padding: 3px;
+    background: hsl(6, 100%, 19%);
+    color: #fff;
+}
+
+select option {
+    font-size: 17px;
+    padding: 5px;
+  
+}
+
 .btns {
     margin-bottom: 50px;
 }
@@ -149,4 +172,67 @@ input:focus {
 .btns button {
     font-size: 20px;
     padding: 10px;
+}
+
+.result {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.result .div-element {
+margin: 10px 0px;
+
+}
+
+.btn-position {
+    text-align: center;
+}
+
+.return-btn {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #fff;
+    padding: 8px;
+}
+
+
+
+@media(max-width:750px) {
+    body {
+    background: linear-gradient(hsl(6,100%,4%),hsl(6,100%,70%));
+}
+
+    .field, .field input {
+        width: 90%;
+    }
+    
+
+    .form-element .progress-bar {
+        width: 400px;
+    }
+
+    .form-element .progress-bar::before {
+        width: calc(var(--width,0)*0.94%);
+    }
+
+    .gender-field fieldset {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+
+@media(max-width:470px) {
+    .form-element .progress-bar {
+        width: 300px;
+    }
+
+    .form-element .progress-bar::before {
+        width: calc(var(--width,0)*0.88%);
+    }
 }
