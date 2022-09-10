@@ -14,6 +14,7 @@
     <form action="result.html" method="get" enctype="multipart/form-data" autocomplete="off">
         <div class="wrapper-container">
             <h1>Registration Form</h1>
+            <strong>Fields with <span>*</span> are mandatory</strong>
         <div class="username-field field">
             <label for="username">Username <span>*</span></label>
             <input type="text" name="username" id="username" minlength="4" maxlength="16" pattern="[a-zA-Z\d]{4,16}" size="40" required>
@@ -32,7 +33,7 @@
                 </div>
                 </div>
                 <p class="upper">Password must contain at least one uppercase letter</p>
-                <p class="length">Password length must be greater than 8</p>
+                <p class="length">Password length must be greater or equal to 8</p>
                 <p class="digit">Password must contain a digit</p>
                 <p class="lower">Password must contain lowercase letters</p>
         </div>
@@ -55,8 +56,8 @@
         </div>
 
         <div class="phone-field field">
-            <label for="phone-number">Phone:</label>
-            <input type="tel" name="phone-number" id="phone-number" pattern="([+])?[0-9]{10,12}" placeholder="e.g., +359123456789" required>
+            <label for="phone-number">Phone:<span> *</span></label>
+            <input type="tel" name="phone-number" id="phone-number" pattern="([+])?[0-9]{12}" placeholder="e.g., +359123456789" required>
         </div>
 
         <div class="gender-field field">

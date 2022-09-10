@@ -12,6 +12,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.wrapper-container strong {
+    font-size: 20px;
+}
+
 .wrapper-container {
     display: grid;
     grid-gap: 20px;
@@ -56,53 +60,13 @@ div p {
     font-size: 20px;
 }
 
-.username-field {
+.field {
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     padding: 20px;
 }
 
-.password-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
 
-.email-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
-
-.birthdate-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
-
-.phone-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
-
-.gender-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
-
-.file-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
-
-.region-field {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding: 20px;
-}
 
 .preview {
     display: flex;
@@ -172,6 +136,13 @@ select option {
 .btns button {
     font-size: 20px;
     padding: 10px;
+    color: #fff;
+    background: hsl(6, 100%, 19%);
+    transition: background-color 0.3s linear;
+}
+
+button:hover {
+    background: hsl(6,100%,4%);
 }
 
 .result {
@@ -199,6 +170,12 @@ margin: 10px 0px;
     padding: 8px;
 }
 
+ .img-info {
+margin-left: 20px;
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 2px;
+}
 
 
 @media(max-width:750px) {

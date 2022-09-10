@@ -209,13 +209,30 @@ function updateImage() {
     }
 
     const currentFile = fileInput.files;
+    let fileSize = fileInput.files[0].size;
+    let fileSizeData = calculateFileSize(fileSize);
 
     let image = document.createElement('img')
-    let text = document.createElement('p')
+    let fileSizeInfo = document.createElement('p')
+    fileSizeInfo.classList.add('img-info')
+    fileSizeInfo.textContent = 'File Size:' + fileSizeData
     image.src = URL.createObjectURL(currentFile[0]);
-    image.width = 200
-    console.log(image);
+    image.width = 300
     preview.appendChild(image)
+    preview.appendChild(fileSizeInfo)
+    
+}
+
+function calculateFileSize(number) {
+    if(number < 1024) {
+        return `${number} bytes`
+    }
+    else if(number >= 1024 && number < 1048576) {
+        return `${(number / 1024).toFixed(1)} KB`
+    }
+    else if(number > 1048576) {
+        return `${(number / 1048576).toFixed(1)} MB`
+    }
 }
 
 function validatePassword() {
@@ -230,7 +247,7 @@ function validatePassword() {
 function customValidate() {
     validateConfirmPassword()
     validateEmail()
-    validatePhoneNumber()
+    validatePhoneNumber() 
   }
 
   function validateConfirmPassword() {
@@ -266,12 +283,21 @@ function customValidate() {
   function validatePhoneNumber() {
     const input = document.getElementById('phone-number');
     const validityState = input.validity;
+    console.log(input.value.length);
   
     if (validityState.valueMissing) {
       input.setCustomValidity('You must add your phone number!');
-    } else if (validityState.patternMismatch) {
+    }
+    else if(input.value.length > 13) {
+        input.setCustomValidity('Phone Number is too long')
+    }
+    else if(input.value.length < 13) {
+        input.setCustomValidity('Phone Number is too short')
+    }
+    else if (validityState.patternMismatch) {
       input.setCustomValidity('Only digits are allowed!');
-    }  else {
+    }
+    else {
       input.setCustomValidity('');
     }
   
