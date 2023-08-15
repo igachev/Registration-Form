@@ -6,39 +6,52 @@ describe('testing index.js file', function() {
   let ageTextElement;
 
   beforeEach(function() {
-    // Create and append the birthDate input element to the document body
+    // BirthDate
     birthDateElement = document.createElement("input");
     birthDateElement.setAttribute("type", "date");
     birthDateElement.setAttribute("id", "birthDate");
+    birthDateElement.setAttribute("max","2008-12-31")
+    birthDateElement.setAttribute("min","1908-12-31")
+    birthDateElement.setAttribute("required",true)
     document.body.appendChild(birthDateElement);
-
-    // Create and append the age text element to the document body
     ageTextElement = document.createElement("p");
     ageTextElement.className = "age";
     document.body.appendChild(ageTextElement);
 
-    // Attach the event listener
-   // birthDateElement.addEventListener('input', calculateAge);
+    
   });
 
   afterEach(function() {
-    // Remove the event listener
-  //  birthDateElement.removeEventListener('input', calculateAge);
-
-    // Clean up: remove the added elements after each test
+   
     document.body.removeChild(birthDateElement);
     document.body.removeChild(ageTextElement);
   });
 
   it("calculateAge() should calculate the correct age", function() {
-    // Set the value of the birthDate input element
     birthDateElement.value = "2000-01-01";
-
-    // Call the function
     calculateAge();
-
-    // Check if the age text element contains the expected value
-    expect(ageTextElement.innerText).toEqual("Age:23"); // Adjust the expected value based on the current year
+    expect(ageTextElement.innerText).toEqual("Age:23");
   });
+
+  it('calculateAge() should validate maximum birth date',() => {
+    birthDateElement.value = '2010-01-01'
+    calculateAge()
+    expect(birthDateElement.validity.valid).toBe(false);
+    expect(birthDateElement.validationMessage).toBe('Value must be 12/31/2008 or earlier.')
+  })
+
+  it("calculateAge() should validate minimum birth date",() => {
+    birthDateElement.value = '1900-01-01'
+    calculateAge()
+    expect(birthDateElement.validity.valid).toBe(false);
+    expect(birthDateElement.validationMessage).toBe('Value must be 12/31/1908 or later.')
+  })
+
+  it('calculateAge() should be required',() => {
+    birthDateElement.value = "2000-01-01";
+    calculateAge();
+    expect(ageTextElement.innerText).toEqual("Age:23");
+    expect(birthDateElement.validity.valueMissing).toBe(false)
+  })
 
 })
