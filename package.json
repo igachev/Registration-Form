@@ -1,0 +1,16 @@
+{
+  "name": "registration-form",
+  "version": "1.0.0",
+  "description": "Registration Form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-browser-runner": "^2.1.0",
+    "jasmine-core": "^5.1.0"
+  }
+}
