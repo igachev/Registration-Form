@@ -1,4 +1,4 @@
-import { calculateAge } from "../index.js"
+import { calculateAge,validatePassword,validateConfirmPassword } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -52,6 +52,55 @@ describe('testing index.js file', function() {
     calculateAge();
     expect(ageTextElement.innerText).toEqual("Age:23");
     expect(birthDateElement.validity.valueMissing).toBe(false)
+  })
+
+  it('validatePassword() should set pattern attribute of #confirm-pass input to match #pass input',() => {
+    let passwordInput = document.createElement('input')
+    passwordInput.setAttribute("type","password")
+    passwordInput.setAttribute("id", "pass");
+    passwordInput.value = 'test'
+
+    let confirmPasswordInput = document.createElement('input')
+    confirmPasswordInput.setAttribute("type","password")
+    confirmPasswordInput.setAttribute("id", "confirm-pass");
+
+    document.body.appendChild(passwordInput);
+    document.body.appendChild(confirmPasswordInput);
+
+    validatePassword()
+
+    expect(confirmPasswordInput.pattern).toBe('test')
+
+    document.body.removeChild(passwordInput);
+    document.body.removeChild(confirmPasswordInput);
+  })
+
+  it('validateConfirmPassword() should display validation message if confirm password is invalid',() => {
+    let passwordInput = document.createElement('input')
+    passwordInput.setAttribute("type","password")
+    passwordInput.setAttribute("id", "pass");
+    passwordInput.value = 'test'
+
+    let confirmPasswordInput = document.createElement('input')
+    confirmPasswordInput.setAttribute("type","password")
+    confirmPasswordInput.setAttribute("id", "confirm-pass");
+    confirmPasswordInput.setAttribute("required",true)
+    confirmPasswordInput.setAttribute("pattern",passwordInput.value)
+    confirmPasswordInput.value = 't'
+
+    document.body.appendChild(passwordInput);
+    document.body.appendChild(confirmPasswordInput);
+
+    validateConfirmPassword()
+
+    expect(confirmPasswordInput.validationMessage).toBe('Confirm password must be the same as password!')
+
+    confirmPasswordInput.value = ''
+    validateConfirmPassword()
+    expect(confirmPasswordInput.validationMessage).toBe('You must confirm your password!')
+
+    document.body.removeChild(passwordInput);
+    document.body.removeChild(confirmPasswordInput);
   })
 
 })

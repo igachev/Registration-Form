@@ -237,7 +237,7 @@ function calculateFileSize(number) {
     }
 }
 
-function validatePassword() {
+export function validatePassword() {
     let passwordPattern = document.getElementById('confirm-pass');
     let getPasswordValue = document.getElementById('pass').value;
     //console.log(getPasswordValue);
@@ -252,7 +252,7 @@ function customValidate() {
     validatePhoneNumber() 
   }
 
-  function validateConfirmPassword() {
+  export function validateConfirmPassword() {
     const input = document.getElementById('confirm-pass');
     const validityState = input.validity;
   
