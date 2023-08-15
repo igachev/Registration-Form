@@ -19,12 +19,14 @@ let passwordStrengthLevel = 0;
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
 passwordField.addEventListener('keyup',checkPassword)
 usernameField.addEventListener('keyup',checkUsername)
 dateField.addEventListener('input',calculateAge)
 fileInput.addEventListener('change',updateImage)
 confirmPassword.addEventListener('input',validatePassword)
 submitBtn.addEventListener('click',customValidate)
+})
 
 function checkPassword() {
     const passwordFieldValue = document.getElementById('pass').value;
@@ -191,7 +193,7 @@ function userNameSymbolError(usernameFieldValue) {
     }
 }
 
-function calculateAge() {
+export function calculateAge() {
     let date = new Date(document.getElementById('birthDate').value)
    
     let year = date.getFullYear()
