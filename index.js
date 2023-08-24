@@ -163,7 +163,7 @@ function updateStrengthLevel(passwordStrengthLevel) {
     }
 }
 
-function userNameLength(usernameFieldValue) {
+export function userNameLength(usernameFieldValue) {
     let lengthText = document.querySelector('.username-length')
     if(usernameFieldValue.length < 4) {
         lengthText.style.display = 'block'

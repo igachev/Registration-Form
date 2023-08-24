@@ -1,4 +1,4 @@
-import { calculateAge,validatePassword,validateConfirmPassword } from "../index.js"
+import { calculateAge,validatePassword,validateConfirmPassword,userNameLength } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -103,4 +103,52 @@ describe('testing index.js file', function() {
     document.body.removeChild(confirmPasswordInput);
   })
 
+  it('usernameLength() should show message when username length is less than 4 and more than 16', () => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = 'ivo'
+
+    let p = document.createElement('p')
+    p.setAttribute('class','username-length')
+    p.value = 'Username length must be longer than 3 and less than 17'
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameLength(usernameInput.value)
+
+    expect(p.style.display).toBe('block')
+    expect(usernameInput.validationMessage).toBe('Please match the requested format.')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
+
+  it('usernameLength() should hide message when username length is between 4 and 16',() => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = 'ivan'
+
+    let p = document.createElement('p')
+    p.setAttribute('class','username-length')
+    p.value = 'Username length must be longer than 3 and less than 17'
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameLength(usernameInput.value)
+
+    expect(p.style.display).toBe('none')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
 })
