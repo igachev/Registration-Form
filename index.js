@@ -173,7 +173,7 @@ export function userNameLength(usernameFieldValue) {
     }
 }
 
-function userNameRestrictions(usernameFieldValue) {
+export function userNameRestrictions(usernameFieldValue) {
     let restrictions = document.querySelector('.username-restrictions')
     if(usernameFieldValue.match(/[A-Za-z\d]{4,16}/g)) {
         restrictions.style.display = 'none'

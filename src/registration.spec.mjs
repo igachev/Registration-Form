@@ -1,4 +1,8 @@
-import { calculateAge,validatePassword,validateConfirmPassword,userNameLength } from "../index.js"
+import { calculateAge,
+  validatePassword,
+  validateConfirmPassword,
+  userNameLength,
+userNameRestrictions } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -147,6 +151,31 @@ describe('testing index.js file', function() {
     userNameLength(usernameInput.value)
 
     expect(p.style.display).toBe('none')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
+
+  it('usernameRestrictions() should show message when there are no lowercase letters,uppercase letters or digits',() => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = '!@#$'
+
+    let p = document.createElement('p')
+    p.value = 'Username must consist of lowercase letters,uppercase letters or digits'
+    p.setAttribute('class','username-restrictions')
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameRestrictions(usernameInput.value)
+
+    expect(p.style.display).toBe('block')
+    expect(p.value).toBe('Username must consist of lowercase letters,uppercase letters or digits')
 
     document.body.removeChild(usernameInput)
     document.body.removeChild(p)
