@@ -183,7 +183,7 @@ export function userNameRestrictions(usernameFieldValue) {
     }
 }
 
-function userNameSymbolError(usernameFieldValue) {
+export function userNameSymbolError(usernameFieldValue) {
     let errorMsg = document.querySelector('.symbols')
     if(usernameFieldValue.match(/[!@#\$%\^\&*\)\(+=._-]/g)) {
         errorMsg.style.display = 'block'

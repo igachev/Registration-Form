@@ -180,4 +180,28 @@ describe('testing index.js file', function() {
     document.body.removeChild(usernameInput)
     document.body.removeChild(p)
   })
+
+  it('usernameRestrictions() should hide message when there are lowercase letters,uppercase letters or digits',() => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = 'ivan'
+
+    let p = document.createElement('p')
+    p.value = 'Username must consist of lowercase letters,uppercase letters or digits'
+    p.setAttribute('class','username-restrictions')
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameRestrictions(usernameInput.value)
+
+    expect(p.style.display).toBe('none')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
 })
