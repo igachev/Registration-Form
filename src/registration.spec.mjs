@@ -2,7 +2,8 @@ import { calculateAge,
   validatePassword,
   validateConfirmPassword,
   userNameLength,
-userNameRestrictions } from "../index.js"
+userNameRestrictions,
+userNameSymbolError } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -198,6 +199,55 @@ describe('testing index.js file', function() {
     document.body.appendChild(p)
 
     userNameRestrictions(usernameInput.value)
+
+    expect(p.style.display).toBe('none')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
+
+  it('userNameSymbolError() should show message when there are symbols',() => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = 'ivan@!#'
+
+    let p = document.createElement('p')
+    p.setAttribute('class','symbols')
+    p.textContent = 'Do not use symbols!'
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameSymbolError(usernameInput.value)
+
+    expect(p.style.display).toBe('block')
+    expect(document.querySelector('.symbols').textContent).toBe('Do not use symbols!')
+
+    document.body.removeChild(usernameInput)
+    document.body.removeChild(p)
+  })
+
+  it('userNameSymbolError() should hide message when there are no symbols',() => {
+    let usernameInput = document.createElement('input')
+    usernameInput.setAttribute('type','text')
+    usernameInput.setAttribute('required',true)
+    usernameInput.setAttribute('pattern',/[a-zA-Z\d]{4,16}/)
+    usernameInput.setAttribute('min',4)
+    usernameInput.setAttribute('max',16)
+    usernameInput.value = 'ivan'
+
+    let p = document.createElement('p')
+    p.setAttribute('class','symbols')
+    p.textContent = 'Do not use symbols!'
+
+    document.body.appendChild(usernameInput)
+    document.body.appendChild(p)
+
+    userNameSymbolError(usernameInput.value)
 
     expect(p.style.display).toBe('none')
 
