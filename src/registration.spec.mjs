@@ -3,7 +3,8 @@ import { calculateAge,
   validateConfirmPassword,
   userNameLength,
 userNameRestrictions,
-userNameSymbolError } from "../index.js"
+userNameSymbolError,
+validatePhoneNumber } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -253,5 +254,69 @@ describe('testing index.js file', function() {
 
     document.body.removeChild(usernameInput)
     document.body.removeChild(p)
+  })
+
+  it('phone number is required',() => {
+    let phoneInput = document.createElement('input')
+    phoneInput.setAttribute('type','tel')
+    phoneInput.setAttribute('required',true)
+    phoneInput.setAttribute('pattern',/([+])?[0-9]{12}/)
+    phoneInput.setAttribute('id','phone-number')
+    phoneInput.value = ''
+
+    document.body.appendChild(phoneInput)
+
+    validatePhoneNumber()
+    expect(phoneInput.validationMessage).toBe('You must add your phone number!')
+
+    document.body.removeChild(phoneInput)
+  })
+
+  it('validatePhoneNumber() should display message if phone number length is less than 13',() => {
+    let phoneInput = document.createElement('input')
+    phoneInput.setAttribute('type','tel')
+    phoneInput.setAttribute('required',true)
+    phoneInput.setAttribute('pattern',/([+])?[0-9]{12}/)
+    phoneInput.setAttribute('id','phone-number')
+    phoneInput.value = '123'
+
+    document.body.appendChild(phoneInput)
+
+    validatePhoneNumber()
+    expect(phoneInput.validationMessage).toBe('Phone Number is too short')
+
+    document.body.removeChild(phoneInput)
+  })
+
+  it('validatePhoneNumber() should display message if phone number length is more than 13',() => {
+    let phoneInput = document.createElement('input')
+    phoneInput.setAttribute('type','tel')
+    phoneInput.setAttribute('required',true)
+    phoneInput.setAttribute('pattern',/([+])?[0-9]{12}/)
+    phoneInput.setAttribute('id','phone-number')
+    phoneInput.value = '123456789012345'
+
+    document.body.appendChild(phoneInput)
+
+    validatePhoneNumber()
+    expect(phoneInput.validationMessage).toBe('Phone Number is too long')
+
+    document.body.removeChild(phoneInput)
+  })
+
+  it('validatePhoneNumber() should display message if phone number consist of characters',() => {
+    let phoneInput = document.createElement('input')
+    phoneInput.setAttribute('type','tel')
+    phoneInput.setAttribute('required',true)
+    phoneInput.setAttribute('pattern',/([+])?[0-9]{12}/)
+    phoneInput.setAttribute('id','phone-number')
+    phoneInput.value = '+35987634689!'
+
+    document.body.appendChild(phoneInput)
+
+    validatePhoneNumber()
+    expect(phoneInput.validationMessage).toBe('Only digits are allowed!')
+
+    document.body.removeChild(phoneInput)
   })
 })

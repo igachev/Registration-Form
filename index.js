@@ -282,7 +282,7 @@ function customValidate() {
     input.reportValidity();
   }
 
-  function validatePhoneNumber() {
+  export function validatePhoneNumber() {
     const input = document.getElementById('phone-number');
     const validityState = input.validity;
     console.log(input.value.length);
