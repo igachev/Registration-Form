@@ -267,7 +267,7 @@ function customValidate() {
     input.reportValidity();
   }
 
-  function validateEmail() {
+  export function validateEmail() {
     const input = document.getElementById('e-mail');
     const validityState = input.validity;
   

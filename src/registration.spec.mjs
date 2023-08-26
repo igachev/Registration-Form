@@ -4,7 +4,8 @@ import { calculateAge,
   userNameLength,
 userNameRestrictions,
 userNameSymbolError,
-validatePhoneNumber } from "../index.js"
+validatePhoneNumber,
+validateEmail } from "../index.js"
 
 describe('testing index.js file', function() {
 
@@ -318,5 +319,40 @@ describe('testing index.js file', function() {
     expect(phoneInput.validationMessage).toBe('Only digits are allowed!')
 
     document.body.removeChild(phoneInput)
+  })
+
+  it('validateEmail() should display message if there is no email provided',() => {
+    let emailInput = document.createElement('input')
+    emailInput.setAttribute('type','email')
+    emailInput.setAttribute('id','e-mail')
+    emailInput.setAttribute('pattern',/^[a-z][a-z0-9_.]*@(gmail).com$/)
+    emailInput.setAttribute('required',true)
+    emailInput.value = '';
+
+    document.body.appendChild(emailInput)
+
+    validateEmail()
+
+    expect(emailInput.validationMessage).toBe('You must add your gmail!')
+
+    document.body.removeChild(emailInput)
+  })
+
+  it('required email should be gmail or it will display a message',() => {
+    let emailInput = document.createElement('input')
+    emailInput.setAttribute('type','email')
+    emailInput.setAttribute('id','e-mail')
+    emailInput.setAttribute('pattern',/^[a-z][a-z0-9_.]*@(gmail).com$/)
+    emailInput.setAttribute('required',true)
+    emailInput.value = 'ivo@abv.bg';
+
+    document.body.appendChild(emailInput)
+
+    validateEmail()
+
+    expect(emailInput.value).not.toMatch(/^[a-z][a-z0-9_.]*@(gmail).com$/)
+    expect(emailInput.validationMessage).toBe('Error!Gmail required!')
+
+    document.body.removeChild(emailInput)
   })
 })
