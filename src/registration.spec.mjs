@@ -1,11 +1,9 @@
-import { calculateAge,
-  validatePassword,
-  validateConfirmPassword,
-  userNameLength,
-userNameRestrictions,
-userNameSymbolError,
-validatePhoneNumber,
-validateEmail } from "../index.js"
+
+import { calculateAge } from "../services/dateServices.js";
+import {userNameLength,userNameRestrictions,userNameSymbolError,} from "../services/usernameServices.js";
+import {validatePassword,validateConfirmPassword,} from "../services/passwordServices.js"
+import { validateEmail } from "../services/emailServices.js";
+import { validatePhoneNumber } from "../services/phoneServices.js";
 
 describe('testing index.js file', function() {
 
