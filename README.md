@@ -15,6 +15,14 @@
  4. To run tests type in the terminal `npx jasmine-browser-runner serve`
 
 
+### Tests:
+<p align="center">
+ 
+ ![reg-testing](https://github.com/igachev/Registration-Form/assets/102420254/6375da50-0445-40bc-916b-cb6c51957414)
+
+</p>
+
+
 ### How It Works:
 <p align="center">
 Before fill
